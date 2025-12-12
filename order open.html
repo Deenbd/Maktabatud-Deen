@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Protected Links</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: none;
+        }
+        .container {
+            text-align: center;
+            background: none;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        h4 {
+            margin-bottom: 20px;
+            color: white;
+        }
+        h2 {
+            color: white;
+        }
+        .password-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 80%;
+        }
+        input[type="password"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error-message {
+            color: white; /* ত্রুটি বার্তার রং
+            margin-top: 10px;
+            font-size: 14px;
+            display: none; /* Initially hidden */
+        }
+    </style>
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            const validPasswords = ["lib1", "4836", "5454", "9869", "1241", "5357", "2825", "5565", "5366", "4544", "4343", "5355", "5356", "4384", "4646", "8358", "5365", "4310", "4354", "4334", "4344", "4364", "4345", "3333", "5656", "8359", "4444", "3636", "8585", "2342", "5455", "4234", "6434", "3434", "9021", "5445", "4242", "2432", "3223", "6236", "3232", "4230", "0603", "7373"]; // অনুমোদিত পাসওয়ার্ডের তালিকা / আইডিসমূহ
+
+            if (validPasswords.includes(password)) {
+                errorMessage.style.display = "none"; // Hide error message
+                window.open("https://sites.google.com/view/maktabatuddeen/books", "_blank");
+            } else {
+                errorMessage.textContent = "The ID you entered is incorrect! Please try again!";
+                errorMessage.style.display = "block"; // Show error message
+            }
+        }
+
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const icon = document.getElementById('toggle-icon');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.src = "https://lh4.googleusercontent.com/8jTMmSmrlviUlq31wSiUgdqw5Psq5Mz1hH4_FgFsR-XN9txvNZUfF7KZf0ZmW0Tr-IHqjHykIgrMp2My8F5s-csUFY7HLWPifmqUony4reSstH7EoWwmqPt4osnfJdMO3REG2ZPhiPU=w1280"; // পাসওয়ার্ড দেখানোর আইকন
+            } else {
+                passwordField.type = 'password';
+                icon.src = "https://lh3.googleusercontent.com/o4up1RUYbylhB7t9svRWH-HmuBiTfg-_k85XYp1MVXw62Bh_zcrMVCQlN4snZftcEWVejCf3hNAbZ_vshXXFYDVuOlDgmSdK4Wxgea9jXwLjhrgSo3TUxkwTYPkW0aKCmX14T0VPd6Y=w1280"; // পাসওয়ার্ড লুকানোর আইকন
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('password').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    checkPassword();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Provide your Maktabatud Deen ID</h2>
+        <h4>Don't know your ID? Contact the librarian of Maktabatud Deen.</h4>
+        <h4>Still not working? Then inform the librarian of Maktabatud Deen about the issue or report it via the contact form.</h4>
+        <div class="password-wrapper">
+            <input type="password" id="password" placeholder="Enter your ID">
+            <img class="toggle-password" id="toggle-icon" src="https://lh3.googleusercontent.com/o4up1RUYbylhB7t9svRWH-HmuBiTfg-_k85XYp1MVXw62Bh_zcrMVCQlN4snZftcEWVejCf3hNAbZ_vshXXFYDVuOlDgmSdK4Wxgea9jXwLjhrgSo3TUxkwTYPkW0aKCmX14T0VPd6Y=w1280" onclick="togglePasswordVisibility()">
+        </div>
+        <div id="error-message" class="error-message"></div> <!-- Error message div -->
+        <br>
+        <button onclick="checkPassword()">Go to the Order/Booking page!</button>
+    </div>
+</body>
+</html>
